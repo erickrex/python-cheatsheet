@@ -9,12 +9,16 @@ monthly_rate = annual_percentage_rate/100/12
 
 for i in range(forecast_payments):
     #Added interest
-    interest_paid = money_owed * monthly_rate
-    money_owed = money_owed + interest_paid
+    interest_paid_monthly = money_owed * monthly_rate
+    money_owed = money_owed + interest_paid_monthly
+
+    if (money_owed - payment < 0):
+        print('That is enough, please pay the remaining', money_owed)
+        break
 
     #Payments made are subtracted from the total
     money_owed = money_owed - payment
 
     #print the results after this month
-    print('Paid', payment, 'of which', interest_paid, 'was interest', end=' ')
+    print('Paid', payment, 'of which', interest_paid_monthly, 'was interest', end=' ')
     print('Now I owe', money_owed)
