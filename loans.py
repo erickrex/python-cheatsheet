@@ -6,7 +6,7 @@ forecast_payments = int(input("How many months do you want to forecast?"))
 
 #Divided by 100 to make it a percent, then divided by 12 to make it monthly
 monthly_rate = annual_percentage_rate/100/12
-
+installments = {}
 for i in range(forecast_payments):
     #Added interest
     interest_paid_monthly = money_owed * monthly_rate
@@ -22,3 +22,6 @@ for i in range(forecast_payments):
     #print the results after this month
     print('Paid', payment, 'of which', interest_paid_monthly, 'was interest', end=' ')
     print('Now I owe', money_owed)
+    installments[i] = interest_paid_monthly
+
+print(installments)
