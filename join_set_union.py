@@ -1,4 +1,6 @@
 csv = 'Eric,Don Eric,Rick,Rex:Rebecca;Romulo,Randall'
+import sys
+
 
 print(csv)
 friends_list = (','.join(','.join(csv.split(';')).split(':'))).split(',')
@@ -17,4 +19,3 @@ for i in range(10):
     print("Outer break will be executed")    
     break 
 
- 
