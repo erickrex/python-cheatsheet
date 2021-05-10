@@ -10,3 +10,11 @@ print('replace', csv.replace(';',',').replace(':',',').split(','))
 # set.union
 # set.symmetric_difference or x ^ y
 # example = list(set(example_list))
+
+for i in range(10):
+    for j in range(10):
+        print(j)    
+    print("Outer break will be executed")    
+    break 
+
+ 
