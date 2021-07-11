@@ -16,12 +16,12 @@ def timer(func):
     return wrapper
 
 
-@timer
-def sleep_n_seconds(n):
-    time.sleep(n)
+# @timer
+# def sleep_n_seconds(n):
+#     time.sleep(n)
 
 
-sleep_n_seconds(2)
+# sleep_n_seconds(2)
 
 
 def memoize(func):
@@ -32,10 +32,12 @@ def memoize(func):
 
     def wrapper(*args, **kwargs):
         # If these arguments have not been seen before
-        if (args, kwargs) not in cache:
+        key = (args, tuple((kwargs.items())))
+        if key not in cache:
             # Call func() and store the result
-            cache[(args, kwargs)] = func(*args, **kwargs)
-        return cache[(args, kwargs)]
+            cache[key] = cc = func(*args, **kwargs)
+            return cc
+        return cache[key]
     return wrapper
 
 
@@ -46,4 +48,7 @@ def slow_function(a, b):
     return a + b
 
 
-slow_function(3, 4)
+print(slow_function(3, 4))
+
+print("memoized below")
+print(slow_function(3, 4))
